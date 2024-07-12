@@ -1,15 +1,24 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
+# Selenium에서 필요한 모듈
+from selenium import webdriver  # 웹 드라이버 관련 모듈
+from selenium.webdriver.chrome.service import Service  # Chrome 서비스 관련 모듈
+from selenium.webdriver.chrome.options import Options  # Chrome 옵션 관련 모듈
+from selenium.webdriver.common.by import By  # 웹 요소를 검색하기 위한 방법(By) 관련 모듈
+from selenium.webdriver.support.ui import WebDriverWait  # 웹 페이지가 로드될 때까지 대기하기 위한 모듈
+from selenium.webdriver.support import expected_conditions as EC  # 조건을 기다리기 위한 모듈
+from selenium.webdriver.common.action_chains import ActionChains  # 마우스 액션을 수행하기 위한 모듈
+
+# BeautifulSoup를 사용하여 HTML 파싱을 위한 모듈
 from bs4 import BeautifulSoup
+
+# 정규 표현식 및 시간 관련 모듈
 import re
 import time
+
+# GUI 요소를 생성하기 위한 모듈
 import tkinter as tk
 from tkinter import Menu, Button, Text, Scrollbar, BooleanVar, messagebox, filedialog
+
+# 다중 스레드를 위한 threading 모듈
 import threading
 
 
@@ -35,6 +44,13 @@ def fetch_album_info(url, text_area, delete_url_after_download, url_entry, delay
         driver = webdriver.Chrome(service=Service(chrome_driver_path), options=options)
         
         driver.get(url)
+
+        # 가수 이름 가져오기
+        try:
+            artist_element = driver.find_element(By.CSS_SELECTOR, 'h2.page-top-this a')
+            artist_name = artist_element.text.strip() if artist_element else 'Unknown Artist'
+        except Exception as e:
+            artist_name = 'Unknown Artist'
         
         album_info_list = []
         
@@ -94,12 +110,18 @@ def fetch_album_info(url, text_area, delete_url_after_download, url_entry, delay
                         text_area.see(tk.END)  # 스크롤바를 맨 아래로 이동
                         break
                 except Exception as alert_exception:
-                    text_area.insert(tk.END, f"[안내] Failed to handle alert: {alert_exception}\n")
+                    text_area.insert(tk.END, f"[안내] Failed to handle alert: {alert_exception}\n\n\n")
                     text_area.see(tk.END)  # 스크롤바를 맨 아래로 이동
                 break
 
         if album_info_list:
-            text_area.insert(tk.END, "\n\nAlbum Information:\n\n")
+            # text_area 초기화
+            text_area.delete(1.0, tk.END)
+            
+            text_area.insert(tk.END, f"\n[알림] 모든 작업이 정상적으로 처리되었습니다.\n\n\n\n")
+
+            text_area.insert(tk.END, f"===== {artist_name} Album Information =====\n\n")
+            
             for album_info in album_info_list:
                 text_area.insert(tk.END, '-' * 40 + '\n')
                 text_area.insert(tk.END, f"Title: {album_info['Title']}\n")
@@ -109,21 +131,20 @@ def fetch_album_info(url, text_area, delete_url_after_download, url_entry, delay
                 text_area.insert(tk.END, f"\n[Album URL]\nhttps://www.genie.co.kr/detail/albumInfo?axnm={album_info['fnViewAlbumLayer']}\n")
                 text_area.insert(tk.END, '-' * 40 + '\n\n')
 
-            text_area.see(tk.END)  # 스크롤바를 맨 아래로 이동
         else:
             text_area.insert(tk.END, "[안내] 앨범 정보를 찾을 수 없습니다.\n\n")
             text_area.see(tk.END)  # 스크롤바를 맨 아래로 이동
     
     finally:
-        if delete_url_after_download.get():
-            url_entry.delete(0, tk.END)
-        driver.quit()
-
         # 작업이 끝난 후에 버튼 다시 활성화
         url_entry.config(state=tk.NORMAL)
-        checkbox.config(state=tk.NORMAL)
         fetch_button.config(state=tk.NORMAL)
         button_clear.config(state=tk.NORMAL)
+        
+        if delete_url_after_download.get():
+            url_entry.delete(0, tk.END)
+            
+        driver.quit()
 
 
 
@@ -133,16 +154,15 @@ def start_fetching(url_entry, text_area, delete_url_after_download):
         
         # 앨범 정보 가져오기 버튼 비활성화
         url_entry.config(state=tk.DISABLED)
-        checkbox.config(state=tk.DISABLED)
         fetch_button.config(state=tk.DISABLED)
         button_clear.config(state=tk.DISABLED)
 
         # 지연 시간 설정 (초 단위)
         delay = 5
         
-        text_area.insert(tk.END, f"[알림] {delay}초 후 작업이 진행 됩니다.\n\n")
+        text_area.insert(tk.END, f"\n[알림] {delay}초 후 작업이 진행 됩니다.\n\n")
         text_area.insert(tk.END, f"[경고] 작업이 진행되는 웹 브라우저를 임의로 작업하지 마십시오.\n\n")
-        text_area.insert(tk.END, "[알림] 아래에 표기 된 내용은 오류 코드가 아닙니다.\n\n\n\n")
+        # text_area.insert(tk.END, "[알림] 아래에 표기 된 내용은 오류 코드가 아닙니다.\n\n\n\n")
         
         text_area.see(tk.END)  # 스크롤바를 맨 아래로 이동
         
@@ -187,12 +207,9 @@ log Clear: 화면 하단 Log 값 모두 삭제
     messagebox.showinfo("도움말(Help)", help_text)
 
 def show_program_about():
-    show_program_about_text = """Genie Music Artist Album Crawler
-Version 1.0
-Copyright © 2024 IZH0318. All rights reserved.
+    show_program_about_text = """Genie Music Artist Album Crawler (Version 1.0)
 
-이 소프트웨어는 비상업적 목적으로만 자유롭게 사용할 수 있습니다.
-(This software is freely available for non-commercial purposes only.)
+Created by (Github) IZH318 in 2024.
 
 이 소프트웨어의 사용으로 인해 발생하는 모든 문제에 대한 책임은 사용자 본인에게 있습니다.
 (This software's usage is solely the responsibility of the user for any issues that may arise.)

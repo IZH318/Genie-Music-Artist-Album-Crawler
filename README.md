@@ -1,6 +1,5 @@
 # Genie-Music-Artist-Album-Crawler
-### rsack를 GUI로 사용할 수 있게 만든 추가 파이썬 코드 입니다. <BR>
-### ( ※ rsack GUI Manager를 사용하려면 rsack가 설치되어 있어야 합니다.)
+### 지니뮤직에 등록 되어 있는 아티스트의 앨범 정보(정규앨범, 싱글/EP, 기타앨범, 참여앨범 등을 포함 한 전체앨범 정보)를 한 번에 크롤링 하는 Python Script 입니다. <BR>
 
 <BR> <BR> <BR>
 
@@ -8,21 +7,22 @@
 
 ## 🔍 주요 기능
 ![_2024_07_13_06_04_44_540-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/33272896-67ff-466c-afb9-08c141ce591d) <BR> <BR>
-■ 단일 또는 다중 앨범 링크를 입력란에 작성하면 직접 명령어를 입력 할 필요 없이 모든 작업이 순차적 또는 일괄 처리 됩니다. <BR>
-**( ※ rsack의 자세한 기능은 https://github.com/Slyyxp/rsack 참고)** <BR>
+■ 원하는 아티스트의 앨범 정보란으로 이동 후 URL을 복사하여 붙여넣으면 자동으로 전체앨범 정보가 크롤링 됩니다. <BR>
 
 <BR> <BR> <BR>
 
 
 
 ## 💾 다운로드
-### ※ 본 Repositories에 업로드 된 rsack GUI Manager.py 파일을 직접 다운 또는 복사하거나, Releases로 이동하여 다운로드 하십시오. <br><br>
+### ※ 본 Repositories Releases로 이동하여 다운로드 하십시오. <br><br>
 ### ※ 본 도구를 사용할 때 필요한 모든 파일들은 zip 파일에 포함되어 있습니다. <BR>
 ***본 Repositories Releases에 제공 된 .zip 파일을 사용하려는 경우 개별 다운로드 과정을 생략해도 되며, 제공 된 설치 파일들을 신뢰하지 않을 경우 아래 링크를 통해 개별 다운로드 하시기 바랍니다.** <BR>
 
 | Program                                | URL                                                | 필수여부 | 비고                                                                                           |
 |----------------------------------------|----------------------------------------------------|----------|------------------------------------------------------------------------------------------------|
-| `Python 3.9.0`            | [Download](https://www.python.org/downloads/release/python-390/)   | 필수     | ◼ Python Script 동작, 파이썬 3.9.0 버전 또는 그 이상 사용 가능 |
+| `Python 3.8.0`            | [Download](https://www.python.org/downloads/release/python-390/)   | 필수     | ◼ Python Script 동작, 파이썬 3.8.0 버전 또는 그 이상 사용 가능 |
+| `Chrome`            | [Download](https://www.google.com/chrome/)   | 필수     | ◼ 크롤링 전용 웹 브라우저 |
+| `Chrome Driver`            | [Download](https://googlechromelabs.github.io/chrome-for-testing/)   | 필수     | ◼ 추가 플러그인 |
 
 <BR> <BR> <BR>
 
@@ -30,7 +30,6 @@
 
 ## ❗ 주의 사항 ❗
 ### ※ 모든 내용은 2024-07-13 기준입니다.
-### ※ 반드시 저장 장치의 여유 공간을 확인 후 작업하시기 바랍니다.
 ### ※ 미처 발견하지 못한 오류가 있을 수 있습니다.
 
 <BR> <BR> <BR>
@@ -75,29 +74,19 @@ or <BR>
 `python -m pip install --upgrade pip --user` <BR>
 <BR> <BR> <BR>
 4-2. **(필수) rsack Package 설치** <BR> <BR>
-`pip install rsack` <BR>
+`pip install selenium beautifulsoup4` <BR>
 or <BR>
-`python -m pip install rsack` <BR> <BR>
+`python -m pip install selenium beautifulsoup4` <BR> <BR>
 **[ ※ 주의 ] 만약 위 명령어 사용 중 ERROR: Could not install packages due to an EnvironmentError: [WinError 5] 액세스가 거부되었습니다: (생략) Consider using the `--user` option or check the permissions. 과 같은 오류가 나왔다면 끝에 `--user`를 붙여서 입력** <BR> <BR>
 (* 권한 오류 발생시 두 코드 중 하나 선택) <BR>
-`pip install rsack --user` <BR>
+`pip install selenium beautifulsoup4 --user` <BR>
 or <BR>
-`python -m pip install rsack --user` <BR>
-<BR> <BR> <BR>
-4-3. **(필수) BeautifulSoup4 설치** <BR> <BR>
-`pip install beautifulsoup4` <BR>
-or <BR>
-`python -m pip install beautifulsoup4` <BR> <BR>
-**[ ※ 주의 ] 만약 위 명령어 사용 중 ERROR: Could not install packages due to an EnvironmentError: [WinError 5] 액세스가 거부되었습니다: (생략) Consider using the `--user` option or check the permissions. 과 같은 오류가 나왔다면 끝에 `--user`를 붙여서 입력** <BR> <BR>
-(* 권한 오류 발생시 두 코드 중 하나 선택) <BR>
-`pip install beautifulsoup4 --user` <BR>
-or <BR>
-`python -m pip install beautifulsoup4 --user` <BR>
+`python -m pip install selenium beautifulsoup4 --user` <BR>
 <BR> <BR> <BR>
 
 
 
-5. (필수) rsack_settings.ini 파일 생성 <BR> <BR>
+5. (필수) Chrome Driver 다운로드 <BR> <BR>
 5-1. 확장자 숨김 처리 해제 <BR> <BR>
 ![확장자 표시 설명](https://github.com/user-attachments/assets/ec81c43a-2c51-48c3-bcfe-d681cedd0832) <BR>
 (📌 **[ ※ 필수 ]** 확장자가 숨김 처리 된 상태인 경우 반드시 위 스크린 샷 참고하여 확장자 표시 상태로 작업 ) <BR> <BR> <BR> <BR>
@@ -113,56 +102,32 @@ or <BR>
 (📌 위 예시는 아래와 같음 (* 아래 내용은 단순히 참고용으로만 사용) ) <BR> <BR>
 ![2024-07-12 05 19 06](https://github.com/user-attachments/assets/8091ade2-cf9b-44ae-aa41-8a7e8b71e280) <BR>
 (📌 만약, 한글이 포함 된 경로를 사용하거나, 주석을 포함하여 저장하고 싶은 경우 `UTF-8` 인코딩이 아닌 `ANSI` 인코딩으로 설정 변경 후 저장) ) <BR>
-```
-# 지니뮤직 정보만 할당
-[Genie]
-# 사용자 계정 명 (* 만약, 지니뮤직 아이디가 abc1234 일 경우)
-username = abc1234
-
-# 사용자 계정 비밀번호 (* 만약, 지니뮤직 비밀번호가 def5678!@ 일 경우)
-password = def5678!@
-
-# 한 번에 처리 될 곡의 수 (* PC 사양과 인터넷 속도에 따라 적절히 설정, 잘 모르겠다면 1~10 사이로 설정 (기본값: 2))
-threads = 2
-
-# 파일이 저장 될 경로 (* 사용자 계정명이 User 이고 바탕화면 test 폴더에 음악 다운로드 (* 기본 값: C:\Music\Korean))
-path = C:\Users\User\Desktop\test
-
-timed_lyrics = true
-contributions = false
-
-# 음악이 저장 되는 폴더 규칙 (* 반드시 접두사 template = \ 는 입력되어 있어야 함)
-template = \{artist}\{artist} - {title}
-
-# proxy 설정(* 반드시 false로 설정해야 하며, 다른 값 입력시 오류 발생)
-proxy = false
-```
 <BR> <BR> <BR>
 
 
 
 ## ⏩ 사용 방법
-01. `rsack GUI Manager.py`를 실행합니다. <BR> <BR>
+01. `Genie Music Artist Album Crawler.py`를 실행합니다. <BR> <BR>
 ![2024-07-12 05 33 07](https://github.com/user-attachments/assets/d83eabf5-525c-4a04-be21-80dda4d39278) <BR> <BR> <BR> <BR>
 
 
 
-2. `rsack GUI Manager GUI` 상단 Album URL 입력: 란에 URL을 입력합니다. (* 한 줄당 하나의 URL 입력) <BR> <BR>
+2. `Genie Music Artist Album Crawler.py` 상단 `지니뮤직 아티스트 앨범 URL 입력:` 란에 URL을 입력합니다. <BR> <BR>
 ![2024-07-12 05 34 53](https://github.com/user-attachments/assets/763fb190-38df-42c3-8e9a-58c204866855) <BR>
-(📌 `https://www.genie.co.kr/detail/albumInfo?axnm=`로 시작하는 문자열만 Que에 올라서 처리 됩니다.) <BR> <BR> <BR> <BR>
+(📌 `https://www.genie.co.kr/detail/artistAlbum?xxnm=`로 시작하는 문자열만 처리 됩니다.) <BR> <BR> <BR> <BR>
 
 
 
-3. Album URL을 입력했다면 `rsack 실행`버튼을 누르거나, 체크 박스 기능을 활성화 하고 `rsack 실행`버튼을 누릅니다. <BR> <BR>
+3. `지니뮤직 아티스트 앨범 URL`을 입력했다면 `앨범 정보 가져오기`버튼을 누르거나, 체크 박스 기능을 활성화 하고 `앨범 정보 가져오기`버튼을 누릅니다. <BR> <BR>
 ![_2024_07_12_05_28_42_749-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/4ecfe8d3-7b4c-4cae-8544-3299c886e56e) <BR>
-(📌 `rsack 버전 확인`버튼 클릭) <BR> <BR> <BR> <BR>
+(📌 `앨범 정보 가져오기`버튼 클릭) <BR> <BR> <BR> <BR>
+![_2024_07_12_05_29_04_620-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/e78a3c4f-f3af-4092-a949-39cf992b3845) <BR>
+(📌 `작업 후 아티스트 앨범 URL 값 초기화` 체크 박스 활성화 후 `앨범 정보 가져오기`버튼 클릭) <BR> <BR> <BR> <BR>
 ![_2024_07_12_05_28_49_89-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/822b7f8a-fd2c-40bb-9a44-7728223f919a) <BR>
 (📌 `log Clear`버튼 클릭) <BR> <BR> <BR> <BR>
-![_2024_07_12_05_29_04_620-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/e78a3c4f-f3af-4092-a949-39cf992b3845) <BR>
-(📌 `작업 후 입력 값 초기화`, `작업 완료시 알림` 체크 박스 활성화 후 `rsack 실행`버튼 클릭 (순차 다운로드)) <BR> <BR> <BR> <BR>
-![_2024_07_12_05_29_33_396-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/838d7691-496b-48a6-bf56-dcadf455970a) <BR>
-(📌 `다중 다운로드` 체크 박스 활성화 후 `rsack 실행`버튼 클릭 (일괄 다운로드)) <BR>
-(📌 **[ ※ 주의 ]** 100줄 이상 많은 양의 URL 입력 후 `다중 다운로드` 기능을 활성화 하면 오류가 발생할 수 있으므로 PC 성능, 인터넷 성능을 고려하여 입력 할 URL의 양을 조절하여 작업하거나, `다중 다운로드` 기능 비 활성화 상태에서 순차 다운로드 받는 것을 권장합니다.) <BR> <BR> <BR> <BR>
+![_2024_07_12_05_28_49_89-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/822b7f8a-fd2c-40bb-9a44-7728223f919a) <BR>
+(📌 메뉴 `파일(File) - 저장(Save)`버튼 클릭) <BR> <BR> <BR> <BR>
+<BR> <BR> <BR>
 
 
 
@@ -172,26 +137,5 @@ proxy = false
 ### ❗ 필수 작업 ❗ <BR>
 ![rsack GUI Manager 읽기 전용 해제 설명](https://github.com/user-attachments/assets/efcfd986-0229-4a62-9a44-909bd5f79854) <BR>
 (📌 Repositories Releases에 제공 된 .zip 파일을 다운 받았는 경우에만 해당) <BR>
-제공 된 Python Script를 수정하고자 하는 파일 선택 후 `마우스 우클릭 -> 속성 -> 일반 -> 특성`항목 중 `읽기 전용(R)`상태 해제 후 확인 <BR> <BR> <BR> <BR>
-
-
-
-01. `https://www.genie.co.kr/detail/albumInfo?axnm=`로 시작하는 URL만 Que에 할당하는 기능 삭제 <BR> <BR>
-57번째 줄 `valid_urls = [url.strip() for url in urls if re.match(r'^https://www\.genie\.co\.kr/detail/albumInfo\?axnm=\d+$', url.strip())]` 코드를 `valid_urls = [url.strip() for url in urls]` 로 수정 <BR> <BR> <BR> <BR>
-
-
-
-02. 순차 다운로드(`다중 다운로드` 체크 박스 비 활성화)시 하나의 URL 처리 후 대기 시간 조절 <BR> <BR>
-141번째 줄 `time.sleep(1)` 코드 괄호 내 숫자 조절 (* 1 = 1초) <BR> <BR> <BR> <BR>
-
-
-
-## 해야 할 일
-- (없음)
-
+제공 된 Python Script를 수정하고자 하는 파일 선택 후 `마우스 우클릭 -> 속성 -> 일반 -> 특성` 항목 중 `읽기 전용(R)`상태 해제 후 확인 <BR>
 <BR> <BR> <BR>
-
-
-
-## Special Thanks to
-✨ Slyyxp ( https://github.com/Slyyxp ) <BR> <BR> <BR> <BR>

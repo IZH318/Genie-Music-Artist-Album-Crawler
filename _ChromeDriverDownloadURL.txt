@@ -1,9 +1,4 @@
-※ PC에 설치 된 Chrome Version에 맞게 다운로드
+※ 사용 환경에 맞게 다운로드
 
 Chrome Driver Download URL
 https://googlechromelabs.github.io/chrome-for-testing/
-
-Stable
-Binary: chromedriver
-
-Platform: win64

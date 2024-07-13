@@ -65,7 +65,7 @@ or <BR> <BR>
 
 4. Chrome Driver 다운로드 받습니다. <BR> <BR>
 ![2024-07-13 08 22 54](https://github.com/user-attachments/assets/636d9e9d-c8e7-4e58-bdcf-57b2fa0cc932) <BR>
-(📌 사용 하는 PC 환경에 맞게 다운로드, Windows 환경 사용자 이면서 본 Repositories Releases에 제공 된 .zip 파일 다운로드 받았다면 이 단계 생략 가능) <BR>
+(📌 사용 하는 PC 환경에 맞게 다운로드, Windows 환경 사용자 이면서 본 Repositories Releases에 제공 된 .zip 파일 다운로드 받았다면 이 단계 생략 가능) <BR> <BR>
 **[ ※ 주의 ] 압축 해제 후 반드시 Script 파일과 동일 디렉터리 또는 하위 디렉터리에 배치 (지정된 하위 디렉터리 폴더 명은 없기 때문에 폴더 이름 상관 없이 인식 가능)** <BR>
 <BR> <BR> <BR>
 

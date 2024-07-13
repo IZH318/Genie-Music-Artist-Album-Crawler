@@ -1,5 +1,5 @@
 # Genie-Music-Artist-Album-Crawler
-### 지니뮤직에 등록 되어 있는 특정 아티스트의 앨범 정보(정규앨범, 싱글/EP, 기타앨범, 참여앨범 등을 포함 한 전체앨범 정보)를 한 번에 크롤링 하는 Python Script 입니다. <BR>
+### 지니뮤직에 등록 되어 있는 특정 아티스트의 앨범 정보(* 정규앨범, 싱글/EP, 기타앨범, 참여앨범 등을 포함 한 전체앨범 정보)를 한 번에 크롤링 하는 Python Script 입니다. <BR>
 
 <BR> <BR> <BR>
 
@@ -66,7 +66,7 @@ or <BR> <BR>
 4. Chrome Driver 다운로드 받습니다. <BR> <BR>
 ![2024-07-13 08 22 54](https://github.com/user-attachments/assets/636d9e9d-c8e7-4e58-bdcf-57b2fa0cc932) <BR>
 (📌 사용 하는 PC 환경에 맞게 다운로드, Windows 환경 사용자 이면서 본 Repositories Releases에 제공 된 .zip 파일 다운로드 받았다면 이 단계 생략 가능) <BR>
-**[ ※ 주의 ] 반드시 Script 파일과 동일 디렉터리 또는 하위 디렉터리에 배치 (하위 디렉터리 폴더 명은 관계 없음)** <BR>
+**[ ※ 주의 ] 압축 해제 후 반드시 Script 파일과 동일 디렉터리 또는 하위 디렉터리에 배치 (지정된 하위 디렉터리 폴더 명은 없기 때문에 폴더 이름 상관 없이 인식 가능)** <BR>
 <BR> <BR> <BR>
 
 
@@ -105,11 +105,13 @@ or <BR>
 
 
 2. GUI 상단 `지니뮤직 아티스트 앨범 URL 입력:` 란에 URL을 입력합니다. <BR> <BR>
-(📌 `https://www.genie.co.kr/detail/artistAlbum?xxnm=`로 시작하는 문자열만 처리 됩니다.) <BR> <BR> <BR> <BR>
+(📌 `https://www.genie.co.kr/detail/artistAlbum?xxnm=`로 시작하는 문자열만 처리 됩니다.) <BR>
+<BR> <BR> <BR>
 
 
 
-3. `지니뮤직 아티스트 앨범 URL`을 입력했다면 `앨범 정보 가져오기`버튼을 누르거나, 체크 박스 기능을 활성화 하고 `앨범 정보 가져오기`버튼을 누릅니다. <BR> <BR>
+3. `지니뮤직 아티스트 앨범 URL`을 입력했다면 `앨범 정보 가져오기`버튼을 누르거나, 체크 박스 기능을 활성화 하고 `앨범 정보 가져오기`버튼을 누릅니다. <BR>
+**[ ※ 주의 ] 크롤링 중인 웹 브라우저를 최소화 또는 창 위치 이동, 창 크기 조절 하는 것은 괜찮으나, 웹 브라우저 화면에 보이는 항목들을 클릭하는 등의 작업은 금지** <BR> <BR> <BR>
 ![_2024_07_13_08_17_31_527-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/64f1a5db-a44e-49c4-907e-a75e6be2cebd) <BR>
 (📌 `앨범 정보 가져오기`버튼 클릭) <BR> <BR> <BR> <BR>
 ![_2024_07_13_08_18_04_886-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/500c1182-5169-49e4-b98a-296b9d3c459b) <BR>
@@ -129,4 +131,10 @@ or <BR>
 ![Genie Music Artist Album Crawler 읽기 전용 해제 설명](https://github.com/user-attachments/assets/7827d33f-c941-45fd-bd24-150e17f4ae7f) <BR>
 (📌 Repositories Releases에 제공 된 .zip 파일을 다운 받았는 경우에만 해당) <BR>
 제공 된 Python Script를 수정하고자 하는 파일 선택 후 `마우스 우클릭 -> 속성 -> 일반 -> 특성` 항목 중 `읽기 전용(R)`상태 해제 후 확인 <BR>
+<BR> <BR> <BR>
+
+
+
+01. 지연 시간 변경 <BR> <BR>
+45번째 줄 `delay = 5` 수정 (기본값 = 5, 초 단위로 입력) <BR>
 <BR> <BR> <BR>

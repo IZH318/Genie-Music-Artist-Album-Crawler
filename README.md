@@ -1,4 +1,4 @@
-# Genie-Music-Artist-Album-Crawler(현재 v1.1.0 업데이트 내용 작성 중)
+# Genie-Music-Artist-Album-Crawler
 ### 지니뮤직에 등록 되어 있는 특정 아티스트의 앨범 정보(* 정규앨범, 싱글/EP, 기타앨범, 참여앨범 등을 포함 한 전체앨범 정보)를 한 번에 크롤링 하는 Python Script 입니다. <BR>
 
 <BR> <BR> <BR>
@@ -42,7 +42,7 @@
 
 
 ## ❗ 주의 사항 ❗
-### ※ 모든 내용은 2024-07-13 기준입니다.
+### ※ 모든 내용은 2024-07-14 기준입니다.
 ### ※ 미처 발견하지 못한 오류가 있을 수 있습니다.
 
 <BR> <BR> <BR>
@@ -126,13 +126,15 @@ or <BR>
 
 3. 앨범 종류가 정상적으로 반환 되었다면 원하는 앨범 종류를 선택 후 `앨범 정보 가져오기`버튼을 누르거나, `작업 후 아티스트 앨범 URL 값 초기화`체크 박스 기능을 활성화 하고 `앨범 정보 가져오기`버튼을 누릅니다. <BR> <BR>
 **[ ※ 주의 ] 크롤링 중인 웹 브라우저를 최소화 또는 창 위치 이동, 창 크기 조절 하는 것은 괜찮으나, 웹 브라우저 화면에 보이는 항목들을 클릭하는 등의 작업은 금지** <BR> <BR> <BR> <BR>
-![_2024_07_13_08_17_31_527-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/64f1a5db-a44e-49c4-907e-a75e6be2cebd) <BR>
-(📌 `앨범 정보 가져오기`버튼 클릭) <BR> <BR> <BR> <BR>
-![_2024_07_13_08_18_04_886-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/500c1182-5169-49e4-b98a-296b9d3c459b) <BR>
-(📌 `작업 후 아티스트 앨범 URL 값 초기화` 체크 박스 활성화 후 `앨범 정보 가져오기`버튼 클릭) <BR> <BR> <BR> <BR>
-![_2024_07_13_08_18_43_407-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/073736a8-46cb-4793-b2c4-91bb6cc379cd) <BR>
+![_2024_07_14_12_05_35_131-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/078c29ac-762e-4c39-952d-6e0b384035b3) <BR>
+(📌 `앨범 종류 가져오기`버튼 클릭) <BR> <BR> <BR> <BR>
+![_2024_07_14_12_06_04_410-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/48369aa2-2a89-42c8-8849-9805d5642a24)<BR>
+(📌 앨범 종류 선택 후 `앨범 정보 가져오기`버튼 클릭) <BR> <BR> <BR> <BR>
+![_2024_07_14_12_06_48_746-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2bc5d53c-1e61-4813-9fab-f8b6e0a99103) <BR>
+(📌 앨범 종류 선택 후 `작업 후 아티스트 앨범 URL 값 초기화` 체크 박스 활성화 + `앨범 정보 가져오기`버튼 클릭) <BR> <BR> <BR> <BR>
+![_2024_07_14_12_07_37_722-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/e1f2a3fa-6aba-4ed6-8f7e-c16d0dd7aa10) <BR>
 (📌 메뉴 `파일(File) - 저장(Save)`버튼 클릭) <BR> <BR> <BR> <BR>
-![_2024_07_13_08_18_50_709-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/7773e39c-3598-4038-a8ee-f578326f6eb6) <BR>
+![_2024_07_14_12_07_49_380-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/7640badf-e108-41f8-89b3-7662a7644c44) <BR>
 (📌 `log Clear`버튼 클릭) <BR>
 <BR> <BR> <BR>
 

@@ -33,7 +33,7 @@
 
 | Program                                | URL                                                | 필수여부 | 비고                                                                                           |
 |----------------------------------------|----------------------------------------------------|----------|------------------------------------------------------------------------------------------------|
-| `Python 3.8.0`            | [Download](https://www.python.org/downloads/release/python-390/)   | 필수     | ◼ Python Script 동작, 파이썬 3.8.0 버전 또는 그 이상 사용 가능 |
+| `Python 3.9.0`            | [Download](https://www.python.org/downloads/release/python-390/)   | 필수     | ◼ Python Script 동작, 파이썬 3.9.0 버전 또는 그 이상 사용 가능 |
 | `Chrome`            | [Download](https://www.google.com/chrome/)   | 필수     | ◼ 크롤링 전용 웹 브라우저 |
 | `Chrome Driver`            | [Download](https://googlechromelabs.github.io/chrome-for-testing/)   | 필수     | ◼ 추가 플러그인 |
 
